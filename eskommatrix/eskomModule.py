@@ -39,3 +39,11 @@ def dictionary_of_metrics(items):
                  'max':round(np.max(items),2)}
     return dom_dict
 ### END FUNCTION
+
+
+### START FUNCTION
+def date_parser(dates):
+    date_only = [date[0:][0:10] for date in dates]
+    return date_only
+
+### END FUNCTION

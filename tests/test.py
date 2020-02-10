@@ -17,3 +17,12 @@ def dictionary_of_metrics():
                                                                     'std': 8.97, 
                                                                     'min': 5, 
                                                                     'max': 14}, 'incorrect'
+
+def date_parser():
+    """
+    make sure date_parser works well
+    """
+    assert eskomModule.date_parser(['2019-11-29 12:50:54', '2019-11-29 12:46:53', '2019-11-29 12:46:10']) != ['2019-11-29', '2019-11-29', '2019-11-29'],'incorrect'
+    
+    assert eskomModule.date_parser(['2019-11-29 12:50:54', '2019-11-29 12:46:53', '2019-11-29 12:46:10']) == ['2019-11-29 12:50:54', '2019-11-29 12:46:53', '2019-11-29 12:46:10'],'incorrect'
+
