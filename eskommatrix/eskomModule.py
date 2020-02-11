@@ -1,6 +1,7 @@
+#importing important packages
 import pandas as pd
 import numpy as np
-
+#----------------------------------------------------------------------------------#
 
 ### START FUNCTION
 def dictionary_of_metrics(items):
@@ -40,6 +41,7 @@ def dictionary_of_metrics(items):
     return dom_dict
 ### END FUNCTION
 
+#----------------------------------------------------------------------------------#
 ### START FUNCTION
 def five_num_summary(items):
     # your code here
@@ -51,7 +53,7 @@ def five_num_summary(items):
     return out_dict
 
 ### END FUNCTION
-
+#----------------------------------------------------------------------------------#
 
 ### START FUNCTION
 def date_parser(dates):
@@ -59,3 +61,4 @@ def date_parser(dates):
     return date_only
 
 ### END FUNCTION
+#----------------------------------------------------------------------------------#
