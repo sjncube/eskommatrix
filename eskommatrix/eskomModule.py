@@ -6,21 +6,21 @@ import numpy as np
 ### START FUNCTION
 def dictionary_of_metrics(items):
     """
-    Calculates the mean, median, variance, standard deviation, 
+    Calculates the mean, median, variance, standard deviation,
     minimum and maximum of a given list of items
 
     Args:
-        items(list): allow a list as input containing  numerical 
+        items(list): allow a list as input containing  numerical
         entries.
     Return:
         dictionary(dom_dict): with keys 'mean', 'median',
-        'std', 'var', 'min', and 'max', corresponding to the mean, 
-        median, standard deviation, variance, 
+        'std', 'var', 'min', and 'max', corresponding to the mean,
+        median, standard deviation, variance,
         minimum and maximum of the input list, respectively.
 
     Example:
-        >>>dictionary_of_metrics([39660.0, 36024.0, 32127.0, 39488.0, 
-        18422.0, 23532.0, 8842.0, 37416.0, 16156.0, 18730.0, 19261.0, 
+        >>>dictionary_of_metrics([39660.0, 36024.0, 32127.0, 39488.0,
+        18422.0, 23532.0, 8842.0, 37416.0, 16156.0, 18730.0, 19261.0,
         25275.0])
 
         {'mean': 26244.42,
@@ -31,7 +31,7 @@ def dictionary_of_metrics(items):
          'max': 39660.0}
 
     """
-    
+
     dom_dict =  {'mean':round(np.mean(items),2),
                  'median':round(np.median(items),2),
                  'var':round(np.var(items, ddof=1),2),
@@ -60,11 +60,25 @@ def date_parser(dates):
     date_only = [date[0:][0:10] for date in dates]
     return date_only
 
+### START FUNCTION
+#----------------------------------------------------------------------------------#
+### START FUNCTION
+
+ """Calculates the number of tweets per day as a dataframe output.
+    Note input data must be in the form 'YYYY-MM-DD HH:MM:SS  """
+
+def number_of_tweets_per_day(df):
+    df['Dates'] = pd.to_datetime(df['Date']).dt.date
+    Tweetspd = df['Dates'].value_counts(sort = False)
+    Tweetspd = pd.DataFrame(Tweetspd).reset_index()
+    Tweetspd.columns = ['Date', 'Tweets']
+    Tweetspd = Tweetspd.sort_values(by=['Date'])
+    return Tweetspd.style.hide_index()
+    
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
-
 ### START FUNCTION
 def stop_words_remover(df):
-    pass 
+    pass
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
