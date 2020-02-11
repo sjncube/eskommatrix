@@ -18,6 +18,15 @@ def dictionary_of_metrics():
                                                                     'min': 5, 
                                                                     'max': 14}, 'incorrect'
 
+
+
+def five_num_summary():
+    """
+     make sure five_num_summary works well
+    """
+    assert eskomModule.five_num_summary([8, 3, 2, 7, 4]) != {'max': 8, 'median': 4.0, 'min': 2, 'q1': 3.0, 'q3': 7.0},'incorrect'
+    
+
 def date_parser():
     """
     make sure date_parser works well

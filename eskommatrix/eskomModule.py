@@ -40,6 +40,18 @@ def dictionary_of_metrics(items):
     return dom_dict
 ### END FUNCTION
 
+### START FUNCTION
+def five_num_summary(items):
+    # your code here
+    out_dict={'max':round(max(items),2),
+       'median':round(np.median(items),2),
+       'min':round(min(items),2),
+       'q1':round(np.percentile(items,25),2),
+       'q3':round(np.percentile(items,75),2)}
+    return out_dict
+
+### END FUNCTION
+
 
 ### START FUNCTION
 def date_parser(dates):
