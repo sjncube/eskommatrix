@@ -12,6 +12,7 @@ def dictionary_of_metrics(items):
     Args:
         items(list): allow a list as input containing  numerical
         entries.
+
     Return:
         dictionary(dom_dict): with keys 'mean', 'median',
         'std', 'var', 'min', and 'max', corresponding to the mean,
@@ -63,18 +64,14 @@ def date_parser(dates):
 ### START FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
-
- """Calculates the number of tweets per day as a dataframe output.
-    Note input data must be in the form 'YYYY-MM-DD HH:MM:SS  """
-
 def number_of_tweets_per_day(df):
-    df['Dates'] = pd.to_datetime(df['Date']).dt.date
-    Tweetspd = df['Dates'].value_counts(sort = False)
-    Tweetspd = pd.DataFrame(Tweetspd).reset_index()
-    Tweetspd.columns = ['Date', 'Tweets']
-    Tweetspd = Tweetspd.sort_values(by=['Date'])
-    return Tweetspd.style.hide_index()
-    
+    """Calculates the number of tweets per day as a dataframe output.
+    Note input data must be in the form 'YYYY-MM-DD HH:MM:SS"""
+
+    df['Date']  = pd.to_datetime(df['Date']).dt.date
+    tweetsperday_df = df.groupby(['Date'])[['Tweets']].count()
+    return tweetsperday_df
+
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
