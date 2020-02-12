@@ -33,13 +33,13 @@ def dictionary_of_metrics(items):
 
     """
 
-    dom_dict =  {'mean':round(np.mean(items),2),
+    metric_dict =  {'mean':round(np.mean(items),2),
                  'median':round(np.median(items),2),
                  'var':round(np.var(items, ddof=1),2),
                  'std':round(np.std(items, ddof=1),2),
                  'min':round(np.min(items),2),
                  'max':round(np.max(items),2)}
-    return dom_dict
+    return metric_dict
 ### END FUNCTION
 
 #----------------------------------------------------------------------------------#
@@ -58,6 +58,8 @@ def five_num_summary(items):
 
 ### START FUNCTION
 def date_parser(dates):
+    """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
+    strings"""
     date_only = [date[0:][0:10] for date in dates]
     return date_only
 
