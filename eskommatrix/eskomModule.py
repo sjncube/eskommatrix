@@ -78,6 +78,10 @@ def number_of_tweets_per_day(df):
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def stop_words_remover(df):
-    pass
+    """removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.
+    The function  modifies the input dataframe and returns a new dataframe"""
+    split_tweets = df.Tweets.apply(lambda x: x.lower().split())
+    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) 
+    return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
