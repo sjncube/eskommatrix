@@ -128,7 +128,7 @@ It takes a pandas dataframe as an input.
 The dataframe contains a column, named 'Tweets'.
 The function splits the sentences in the 'Tweets' into a list of seperate words, and place the result into a new column named 'Split Tweets'. The resulting words must all be lowercase!
 The function modifies the input dataframe directly.
-The function then returns the modified dataframe.
+The function then returns the modified dataframe as an output.
     """
     df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
     return df
