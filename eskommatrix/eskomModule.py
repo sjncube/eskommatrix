@@ -116,3 +116,21 @@ def stop_words_remover(df):
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
+### START FUNCTION
+def word_splitter(df):
+    """
+   The funcrion splits the sentences in a dataframe's column into a list of the separate words.
+    The created lists  is placed in a column named 'Split Tweets' in the original dataframe.
+
+Function Specifications:
+
+It takes a pandas dataframe as an input.
+The dataframe contains a column, named 'Tweets'.
+The function splits the sentences in the 'Tweets' into a list of seperate words, and place the result into a new column named 'Split Tweets'. The resulting words must all be lowercase!
+The function modifies the input dataframe directly.
+The function then returns the modified dataframe.
+    """
+    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
+    return df
+
+### END FUNCTION
