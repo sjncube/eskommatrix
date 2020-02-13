@@ -2,7 +2,6 @@
 import pandas as pd
 import numpy as np
 #----------------------------------------------------------------------------------#
-
 ### START FUNCTION
 def dictionary_of_metrics(items):
     """
@@ -41,7 +40,6 @@ def dictionary_of_metrics(items):
                  'max':round(np.max(items),2)}
     return metric_dict
 ### END FUNCTION
-
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def five_num_summary(items):
@@ -55,15 +53,48 @@ def five_num_summary(items):
 
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
-
 ### START FUNCTION
 def date_parser(dates):
     """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
     strings"""
     date_only = [date[0:][0:10] for date in dates]
     return date_only
-
+### END FUNCTION
+#----------------------------------------------------------------------------------#
 ### START FUNCTION
+def extract_municipality_hashtags(df):
+    """
+    
+    """
+    twitter_df = df
+    mun_dict = {'@CityofCTAlerts' : 'Cape Town',
+                '@CityPowerJhb' : 'Johannesburg',
+                '@eThekwiniM' : 'eThekwini' ,
+                '@EMMInfo' : 'Ekurhuleni',
+                '@centlecutility' : 'Mangaung',
+                '@NMBmunicipality' : 'Nelson Mandela Bay',
+                '@CityTshwane' : 'Tshwane'}
+    
+    municipal = []
+    for tweet_row in twitter_df['Tweets']:
+        municipality = [] #will store extracted words from  mun_dict
+        [municipality.append(mun_dict[word])  for word in mun_dict if word in tweet_row.split()]  #Extract municipality and put it on my list
+        municipal.append(municipality)
+    twitter_df['municipality'] = municipal 
+    twitter_df['municipality'] = twitter_df['municipality'].apply(lambda municipal: municipal if len(municipal) != 0 else np.nan) #Adding municipality column on my dataframe
+    
+    hashtags = []
+    for tweet_row in twitter_df['Tweets']:
+        extracted_hashtags = [] #will store extracted words from  each tweet rows
+        [extracted_hashtags.append(word.lower()) for word in tweet_row.split() if word[0] == "#"]
+        hashtags.append(extracted_hashtags)
+    twitter_df['hashtags'] = hashtags
+    twitter_df['hashtags'] = twitter_df['hashtags'].apply(lambda hashtags: hashtags if len(hashtags) != 0 else np.nan)
+    
+    df = twitter_df
+    
+    return df
+### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def number_of_tweets_per_day(df):
