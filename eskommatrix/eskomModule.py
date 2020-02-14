@@ -127,10 +127,12 @@ def word_splitter(df):
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def stop_words_remover(df):
-    """Removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.
+    """ Removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.The stop words are provided in the dictionary ('stop_words_dict' ) 
     The function  modifies the input dataframe and returns a new dataframe"""
-    split_tweets = df.Tweets.apply(lambda x: x.lower().split())
-    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) 
+
+    split_tweets = df.Tweets.apply(lambda x: x.lower().split()) # slitting sentences into a list and making the words lower cases form the Tweeets
+    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) #Removing the english stop words using the provided dictionary
+    
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
