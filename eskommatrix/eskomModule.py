@@ -5,7 +5,7 @@ import numpy as np
 ### START FUNCTION
 def dictionary_of_metrics(items):
     """
-    Returns a dictionary of the mean, median, variance, standarddeviation,
+    Returns a dictionary of the mean, median, variance, standard deviation,
     minimum and maximum of a given list.
 
     Keyword Arguments:
@@ -23,8 +23,8 @@ def dictionary_of_metrics(items):
     metric_dict = {
         'mean': round(np.mean(items), 2),
         'median': round(np.median(items), 2),
-        'var': round(np.var(items, ddof=1), 2),
-        'std': round(np.std(items, ddof=1), 2),
+        'var': round(np.var(items, ddof=1), 2),  # divisor n-1 for sample var
+        'std': round(np.std(items, ddof=1), 2),  # divisor n-1 for sample std
         'min': round(np.min(items), 2),
         'max': round(np.max(items), 2)
     }
@@ -186,7 +186,7 @@ def word_splitter(df):
     [@emminfo, please, update, on, the, situation, #eskom]
     is returned in the 'Split Tweets' column.
     """
-    #splits the tweets then returns the lower case output on a new column of the dataframe
+    # tokenization (splitting string into list of tokens)
     df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
     return df
 
