@@ -118,17 +118,20 @@ def number_of_tweets_per_day(df):
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def word_splitter(df):
-    """
-    The funcrion splits the sentences in a dataframe's column into a list of the separate words.
-    The created lists  is placed in a column named 'Split Tweets' in the original dataframe.
-
-    Function Specifications:
-
-    It takes a pandas dataframe as an input.
-    The dataframe contains a column, named 'Tweets'.
-    The function splits the sentences in the 'Tweets' into a list of seperate words, and place the result into a new column named 'Split Tweets'. The resulting words are all lowercase
-    The function modifies the input dataframe directly.
-    The function then returns the modified dataframe as an output on the new column.
+    """Splits the sentences in a dataframe's column into a list of
+    separate lowercase words. Returns a modified dataframe with 
+    a new column named 'Split Tweets'
+    
+    Keyword Arguments:
+    Pandas dataframe as input with column named 'Tweets'
+    
+    Example:
+    For the tweet: 
+    
+    '@EMMInfo Please update on the sitation #eskom'
+    
+    [@emminfo, please, update, on, the, situation, #eskom]
+    is returned in the 'Split Tweets' column.
     """
     df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())#splits the tweets then returns the lower case output on a new column of the dataframe
     return df
