@@ -216,7 +216,6 @@ def stop_words_remover(df):
     split_tweets = df.Tweets.apply(lambda x: x.lower().split())
     #Removing the english stop words using the provided dictionary
     df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']])
-    
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
