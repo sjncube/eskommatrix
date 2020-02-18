@@ -79,53 +79,58 @@ def date_parser(dates):
 ### START FUNCTION
 def extract_municipality_hashtags(df):
     """
-    Returns a modified dataframe with addtional columns 
+    Returns a modified dataframe with addtional columns
     'municipality' and 'hashtags', containing the muncipality
-    and hashtags mentioned in the tweet or the entry np.nan 
+    and hashtags mentioned in the tweet or the entry np.nan
     if neither are found.
-    
+
     Keyword Arguments:
     df -- Pandas dataframe as input with column of 'Tweets'
-    
+
     Example:
     For the tweet '@EMMInfo Please update on the sitation #eskom'
-    
+
     '@EMMInfo' will be displayed in the 'municipality' column
     '#eskom' will be displayed in the 'municipality' column
     """
     twitter_df = df
-    #dictionary containing municipalities
-    mun_dict = {'@CityofCTAlerts' : 'Cape Town',
-                '@CityPowerJhb' : 'Johannesburg',
-                '@eThekwiniM' : 'eThekwini' ,
-                '@EMMInfo' : 'Ekurhuleni',
-                '@centlecutility' : 'Mangaung',
-                '@NMBmunicipality' : 'Nelson Mandela Bay',
-                '@CityTshwane' : 'Tshwane'}
-                
-    #Extract municipalies from tweets and put NANs if municipality is not found
+    # dictionary containing municipalities
+    mun_dict = {'@CityofCTAlerts': 'Cape Town',
+                '@CityPowerJhb': 'Johannesburg',
+                '@eThekwiniM': 'eThekwini',
+                '@EMMInfo': 'Ekurhuleni',
+                '@centlecutility': 'Mangaung',
+                '@NMBmunicipality': 'Nelson Mandela Bay',
+                '@CityTshwane': 'Tshwane'}
+
+    # Extract municipalies from tweets, put NANs if municipality is not found
     municipal = []
     for tweet_row in twitter_df['Tweets']:
-        municipality = []  #will store extracted words from  mun_dict
-        #Extract municipality and put it on my list
-        [municipality.append(mun_dict[word])  for word in mun_dict if word in tweet_row.split()]
+        municipality = []  # Stores extracted words from  mun_dict
+        # Extract municipality and put it on my list
+        [municipality.append(mun_dict[word])
+            for word in mun_dict if word in tweet_row.split()]
         municipal.append(municipality)
-    #Adding municipality column on my twitter_df
+    # Adding municipality column on my twitter_df
     twitter_df['municipality'] = municipal
-    twitter_df['municipality'] = twitter_df['municipality'].apply(lambda municipal: municipal if len(municipal) != 0 else np.nan)
-    
-    #extract hashtags from tweets and put NANs if words on tweet row does not start with # 
+    twitter_df['municipality'] = twitter_df['municipality'].apply(
+        lambda municipal: municipal if len(municipal) != 0 else np.nan)
+
+    # extract hashtags from tweets, put NANs if word starting with '#'
     hashtags = []
     for tweet_row in twitter_df['Tweets']:
-        extracted_hashtags = []  #will store extracted words from  each tweet rows
-        #extract words which starts with # from tweets
-        [extracted_hashtags.append(word.lower()) for word in tweet_row.split() if word[0] == "#"]
+        extracted_hashtags = []  # Stores extracted words from each tweet rows
+        # extract words which starts with # from tweets
+        [extracted_hashtags.append(word.lower())
+            for word in tweet_row.split() if word[0] == "#"]
         hashtags.append(extracted_hashtags)
-    #Adding a new hashtags column on my twitter_df and Add extracted hashtags to the column
+    # Adding new hashtags column to twitter_df and add hashtags to the column
     twitter_df['hashtags'] = hashtags
-    twitter_df['hashtags'] = twitter_df['hashtags'].apply(lambda hashtags: hashtags if len(hashtags) != 0 else np.nan)
+    twitter_df['hashtags'] = twitter_df['hashtags'].apply(
+        lambda hashtags: hashtags if len(hashtags) != 0 else np.nan)
     df = twitter_df
     return df
+
 ### END FUNCTION
 #--------------------------------------------------------------------------------#
 ### START FUNCTION
