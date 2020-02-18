@@ -26,7 +26,8 @@ def dictionary_of_metrics(items):
         'var': round(np.var(items, ddof=1), 2),
         'std': round(np.std(items, ddof=1), 2),
         'min': round(np.min(items), 2),
-        'max': round(np.max(items), 2)}
+        'max': round(np.max(items), 2)
+    }
     return metric_dict
 
 ### END FUNCTION
@@ -36,7 +37,7 @@ def dictionary_of_metrics(items):
 def five_num_summary(items):
     """
     Returns the five number summary in dictionary form.
-    
+
     Keyword Arguments:
     items -- input list of integers.
 
@@ -65,10 +66,20 @@ def five_num_summary(items):
 ### START FUNCTION
 ### Function 3
 def date_parser(dates):
-    """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
-    strings"""
-    date_only = [date[0:][0:10] for date in dates]
-    return date_only
+    """
+    Returns dates in the 'yyyy-mm-dd' format.
+
+    Keyword Arguments:
+    dates -- input a list of datetime strings formatted as
+    'yyyy-mm-dd hh:mm:ss'.
+
+    Example: date_parser(['2016-12-01 23:12:40',
+    '2012-02-05 16:10:55', '1999-01-01 19:17:20'])
+    returns ['2016-12-01', '2012-02-05', '1999-01-01']
+    """
+
+    dates_only = [item[0:10] for item in dates]  # slice date portion of string
+    return(dates_only)
 
 ### END FUNCTION
 #------------------------------------------------------------------------------#
