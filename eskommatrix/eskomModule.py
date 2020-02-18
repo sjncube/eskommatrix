@@ -75,6 +75,7 @@ def date_parser(dates):
     strings"""
     date_only = [date[0:][0:10] for date in dates]
     return date_only
+
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
