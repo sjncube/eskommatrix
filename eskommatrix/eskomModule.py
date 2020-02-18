@@ -59,13 +59,13 @@ def five_num_summary(items):
     five_num_summary([1,2,3,4,5,6]) returns {'max': 6, 'median': 
     3.5, 'min': 1, 'q1': 2.25, 'q3': 4.75}
     """
-    out_dict={'max':round(max(items),2),#calculates the max
-       'median':round(np.median(items),2),#calculates the median of the numbers
-       'min':round(min(items),2),#calculates the minimum
-       'q1':round(np.percentile(items,25),2),#calculates the lower quartile
-       'q3':round(np.percentile(items,75),2)}#calculates the upper quartile
+    out_dict = {'max':round(max(items),2),  #calculates the max
+                'median':round(np.median(items),2),  #calculates the median of the numbers
+                'min':round(min(items),2),  #calculates the minimum
+                'q1':round(np.percentile(items,25),2),  #calculates the lower quartile
+                'q3':round(np.percentile(items,75),2)  #calculates the upper quartile
+               }
     return out_dict
-
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
@@ -135,7 +135,6 @@ def number_of_tweets_per_day(df):
     df['Date']  = pd.to_datetime(df['Date']).dt.date
     tweetsperday_df = df.groupby(['Date'])[['Tweets']].count()
     return tweetsperday_df
-
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
@@ -155,17 +154,33 @@ def word_splitter(df):
     [@emminfo, please, update, on, the, situation, #eskom]
     is returned in the 'Split Tweets' column.
     """
-    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())#splits the tweets then returns the lower case output on a new column of the dataframe
+    #splits the tweets then returns the lower case output on a new column of the dataframe
+    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
 def stop_words_remover(df):
-    """ Removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.The stop words are provided in the dictionary ('stop_words_dict' ) 
-    The function  modifies the input dataframe and returns a new dataframe"""
-
-    split_tweets = df.Tweets.apply(lambda x: x.lower().split()) # slitting sentences into a list and making the words lower cases form the Tweeets
-    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) #Removing the english stop words using the provided dictionary
+    """Returns a modified dataframe with a column named 'Without 
+    Stop Words' that includes a tokenised list of words from the 
+    respective tweet with English stop words from the 
+    'stop_words_dict' removed.
+    
+    Keyword Arguments:
+    Pandas dataframe as input with column named 'Tweets'
+    
+    Example:
+    For the tweet: 
+    
+    '@EMMInfo Please update on the sitation #eskom'
+    
+    [@emminfo, update, situation, #eskom ] is returned in the 
+    'Without Stop Words' column.
+    """
+    #spliting sentences into a list and making the words lower cases from the tweeets
+    split_tweets = df.Tweets.apply(lambda x: x.lower().split())
+    #Removing the english stop words using the provided dictionary
+    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']])
     
     return df
 ### END FUNCTION
