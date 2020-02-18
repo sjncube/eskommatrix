@@ -23,8 +23,8 @@ def dictionary_of_metrics(items):
     metric_dict = {
         'mean': round(np.mean(items), 2),
         'median': round(np.median(items), 2),
-        'var': round(np.var(items, ddof=1), 2),  # divisor n-1 for sample var
-        'std': round(np.std(items, ddof=1), 2),  # divisor n-1 for sample std
+        'var': round(np.var(items, ddof=1), 2),  # ddof=1 for unbiased estimate
+        'std': round(np.std(items, ddof=1), 2),  # ddof=1 for unbiased estimate
         'min': round(np.min(items), 2),
         'max': round(np.max(items), 2)
     }
