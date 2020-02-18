@@ -39,7 +39,7 @@ def dictionary_of_metrics(items):
                     'max':round(np.max(items),2)}
     return metric_dict
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------------#
 ### START FUNCTION
 def five_num_summary(items):
     # your code here
@@ -67,7 +67,7 @@ def five_num_summary(items):
                }
     return out_dict
 ### END FUNCTION
-#--------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------#
 ### START FUNCTION
 def date_parser(dates):
     """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
@@ -75,7 +75,7 @@ def date_parser(dates):
     date_only = [date[0:][0:10] for date in dates]
     return date_only
 ### END FUNCTION
-#--------------------------------------------------------------------------------#
+#----------------------------------------------------------------------------------#
 ### START FUNCTION
 def extract_municipality_hashtags(df):
     """
