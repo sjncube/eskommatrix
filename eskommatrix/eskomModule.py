@@ -67,7 +67,7 @@ def five_num_summary(items):
                }
     return out_dict
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 ### START FUNCTION
 def date_parser(dates):
     """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
@@ -75,7 +75,7 @@ def date_parser(dates):
     date_only = [date[0:][0:10] for date in dates]
     return date_only
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 ### START FUNCTION
 def extract_municipality_hashtags(df):
     """
@@ -127,7 +127,7 @@ def extract_municipality_hashtags(df):
     df = twitter_df
     return df
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 ### START FUNCTION
 def number_of_tweets_per_day(df):
     """Calculates the number of tweets per day as a dataframe output.
@@ -137,7 +137,7 @@ def number_of_tweets_per_day(df):
     tweetsperday_df = df.groupby(['Date'])[['Tweets']].count()
     return tweetsperday_df
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 ### START FUNCTION
 def word_splitter(df):
     """Splits the sentences in a dataframe's column into a list of
@@ -159,7 +159,7 @@ def word_splitter(df):
     df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
     return df
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#--------------------------------------------------------------------------------#
 ### START FUNCTION
 def stop_words_remover(df):
     """Returns a modified dataframe with a column named 'Without 
