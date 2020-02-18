@@ -34,30 +34,31 @@ def dictionary_of_metrics(items):
 ### START FUNCTION
 ### Function 2
 def five_num_summary(items):
-    # your code here
     """
     Returns the five number summary in dictionary form.
-
+    
     Keyword Arguments:
     items -- input list of integers.
 
     Return:
-    returns the five number summary in dictionary form with keys
-    'max', 'median', 'min', 'q1', and 'q3' corresponding to the
-    maximum, median, minimum, first quartile and third quartile
-    of a list of integers.
+    returns the five number summary in dictionary form with keys 'max',
+    'median', 'min', 'q1', and 'q3' corresponding to the maximum, median,
+    minimum, first quartile and third quartile of a list of integers.
 
     Example:
     five_num_summary([1,2,3,4,5,6]) returns {'max': 6, 'median':
     3.5, 'min': 1, 'q1': 2.25, 'q3': 4.75}
     """
-    out_dict = {'max':round(max(items),2),  #calculates the max
-                'median':round(np.median(items),2),  #calculates the median of the numbers
-                'min':round(min(items),2),  #calculates the minimum
-                'q1':round(np.percentile(items,25),2),  #calculates the lower quartile
-                'q3':round(np.percentile(items,75),2)  #calculates the upper quartile
-               }
-    return out_dict
+
+    summ_dict = {
+        'max': round(max(items), 2),
+        'median': round(np.median(items), 2),
+        'min': round(min(items), 2),
+        'q1': round(np.percentile(items, 25), 2),
+        'q3': round(np.percentile(items, 75), 2)
+    }
+    # default linear interpolation used for 'q1' and 'q3'
+    return summ_dict
 
 ### END FUNCTION
 #------------------------------------------------------------------------------#
