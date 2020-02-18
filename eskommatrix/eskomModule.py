@@ -96,13 +96,13 @@ def extract_municipality_hashtags(df):
     df -- Pandas dataframe as input with column of 'Tweets'
 
     Example:
-    For the tweet '@EMMInfo Please update on the sitation #eskom'
+    For the tweet '@EMMInfo Please update on the situation #eskom'
 
     '@EMMInfo' will be displayed in the 'municipality' column
     '#eskom' will be displayed in the 'municipality' column
     """
-    twitter_df = df
-    # dictionary containing municipalities
+
+    # dictionary of twitter handles and corresponding municipalities
     mun_dict = {'@CityofCTAlerts': 'Cape Town',
                 '@CityPowerJhb': 'Johannesburg',
                 '@eThekwiniM': 'eThekwini',
@@ -111,32 +111,31 @@ def extract_municipality_hashtags(df):
                 '@NMBmunicipality': 'Nelson Mandela Bay',
                 '@CityTshwane': 'Tshwane'}
 
-    # Extract municipalies from tweets, put NANs if municipality is not found
+    # extract municipalities from tweets
     municipal = []
-    for tweet_row in twitter_df['Tweets']:
-        municipality = []  # Stores extracted words from  mun_dict
-        # Extract municipality and put it on my list
+    for tweet_row in df['Tweets']:
+        municipality = []
+        # extract municipality and append to list
         [municipality.append(mun_dict[word])
             for word in mun_dict if word in tweet_row.split()]
         municipal.append(municipality)
-    # Adding municipality column on my twitter_df
-    twitter_df['municipality'] = municipal
-    twitter_df['municipality'] = twitter_df['municipality'].apply(
+    # adding municipality column to dataframe
+    df['municipality'] = municipal
+    df['municipality'] = df['municipality'].apply(
         lambda municipal: municipal if len(municipal) != 0 else np.nan)
 
-    # extract hashtags from tweets, put NANs if word starting with '#'
+    # extract hashtags from tweets if word starts with '#'
     hashtags = []
-    for tweet_row in twitter_df['Tweets']:
-        extracted_hashtags = []  # Stores extracted words from each tweet rows
-        # extract words which starts with # from tweets
+    for tweet_row in df['Tweets']:
+        extracted_hashtags = []
+        # extract hashtag words and append to list
         [extracted_hashtags.append(word.lower())
             for word in tweet_row.split() if word[0] == "#"]
         hashtags.append(extracted_hashtags)
-    # Adding new hashtags column to twitter_df and add hashtags to the column
-    twitter_df['hashtags'] = hashtags
-    twitter_df['hashtags'] = twitter_df['hashtags'].apply(
-        lambda hashtags: hashtags if len(hashtags) != 0 else np.nan)
-    df = twitter_df
+    # adding new hashtags column to dataframe
+    df['hashtags'] = hashtags
+    df['hashtags'] = df['hashtags'].apply(lambda hashtags: hashtags if
+                                         len(hashtags) != 0 else np.nan)
     return df
 
 ### END FUNCTION
@@ -152,7 +151,7 @@ def number_of_tweets_per_day(df):
 
     Example:
     Date        | Tweet
-    2019-11-22  | @EMMInfo Please update on the sitation #eskom
+    2019-11-22  | @EMMInfo Please update on the situation #eskom
     2019-11-20  | @Joanne I'm not creative enough to think of a new tweet
     2019-11-20  | You were right, docstrings are fun @Ridhaa
 
@@ -181,7 +180,7 @@ def word_splitter(df):
     Example:
     For the tweet:
 
-    '@EMMInfo Please update on the sitation #eskom'
+    '@EMMInfo Please update on the situation #eskom'
 
     [@emminfo, please, update, on, the, situation, #eskom]
     is returned in the 'Split Tweets' column.
@@ -206,7 +205,7 @@ def stop_words_remover(df):
     Example:
     For the tweet:
 
-    '@EMMInfo Please update on the sitation #eskom'
+    '@EMMInfo Please update on the situation #eskom'
 
     [@emminfo, update, situation, #eskom ] is returned in the
     'Without Stop Words' column.
