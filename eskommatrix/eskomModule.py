@@ -44,11 +44,20 @@ def dictionary_of_metrics(items):
 ### START FUNCTION
 def five_num_summary(items):
     # your code here
-    out_dict={'max':round(max(items),2),
-       'median':round(np.median(items),2),
-       'min':round(min(items),2),
-       'q1':round(np.percentile(items,25),2),
-       'q3':round(np.percentile(items,75),2)}
+    """
+    The function takes in a list of integers and returns a dictionary of the five number summary..
+
+Function Specifications:
+
+The function takes a list as an input.
+Returns a dict with keys 'max', 'median', 'min', 'q1', and 'q3' corresponding to the maximum, median, minimum, first quartile and third quartile, respectively. You may use numpy functions to aid in your calculations.
+All numerical values  rounded to two decimal places.
+    """
+    out_dict={'max':round(max(items),2),#calculates the max
+       'median':round(np.median(items),2),#calculates the median of the numbers
+       'min':round(min(items),2),#calculates the minimum
+       'q1':round(np.percentile(items,25),2),#calculates the lower quartile
+       'q3':round(np.percentile(items,75),2)}#calculates the upper quartile
     return out_dict
 
 ### END FUNCTION
@@ -108,11 +117,31 @@ def number_of_tweets_per_day(df):
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
 ### START FUNCTION
+def word_splitter(df):
+    """
+    The funcrion splits the sentences in a dataframe's column into a list of the separate words.
+    The created lists  is placed in a column named 'Split Tweets' in the original dataframe.
+
+    Function Specifications:
+
+    It takes a pandas dataframe as an input.
+    The dataframe contains a column, named 'Tweets'.
+    The function splits the sentences in the 'Tweets' into a list of seperate words, and place the result into a new column named 'Split Tweets'. The resulting words are all lowercase
+    The function modifies the input dataframe directly.
+    The function then returns the modified dataframe as an output on the new column.
+    """
+    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())#splits the tweets then returns the lower case output on a new column of the dataframe
+    return df
+### END FUNCTION
+#----------------------------------------------------------------------------------#
+### START FUNCTION
 def stop_words_remover(df):
-    """removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.
+    """ Removes english stop words from a tweet (tokenised list of tweets) using pandas dataframe as input.The stop words are provided in the dictionary ('stop_words_dict' ) 
     The function  modifies the input dataframe and returns a new dataframe"""
-    split_tweets = df.Tweets.apply(lambda x: x.lower().split())
-    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) 
+
+    split_tweets = df.Tweets.apply(lambda x: x.lower().split()) # slitting sentences into a list and making the words lower cases form the Tweeets
+    df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']]) #Removing the english stop words using the provided dictionary
+    
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
