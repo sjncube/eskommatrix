@@ -1,8 +1,9 @@
 #importing important packages
 import pandas as pd
 import numpy as np
-#----------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 1
 def dictionary_of_metrics(items):
     """
     Calculates the mean, median, variance, standard deviation,
@@ -40,8 +41,9 @@ def dictionary_of_metrics(items):
     return metric_dict
 
 ### END FUNCTION
-#------------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 2
 def five_num_summary(items):
     # your code here
     """
@@ -67,9 +69,11 @@ def five_num_summary(items):
                 'q3':round(np.percentile(items,75),2)  #calculates the upper quartile
                }
     return out_dict
+
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 3
 def date_parser(dates):
     """Returns dates in the 'YYYY-MM-DD' format from an input list of datetime
     strings"""
@@ -77,8 +81,9 @@ def date_parser(dates):
     return date_only
 
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 4
 def extract_municipality_hashtags(df):
     """
     Returns a modified dataframe with addtional columns
@@ -134,8 +139,9 @@ def extract_municipality_hashtags(df):
     return df
 
 ### END FUNCTION
-#--------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 5
 def number_of_tweets_per_day(df):
     """Calculates the number of tweets per day as a dataframe output.
     Note input data must be in the form 'YYYY-MM-DD HH:MM:SS"""
@@ -144,8 +150,9 @@ def number_of_tweets_per_day(df):
     tweetsperday_df = df.groupby(['Date'])[['Tweets']].count()
     return tweetsperday_df
 ### END FUNCTION
-#--------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 6
 def word_splitter(df):
     """Splits the sentences in a dataframe's column into a list of
     separate lowercase words. Returns a modified dataframe with 
@@ -165,9 +172,11 @@ def word_splitter(df):
     #splits the tweets then returns the lower case output on a new column of the dataframe
     df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())
     return df
+
 ### END FUNCTION
-#--------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
 ### START FUNCTION
+### Function 7
 def stop_words_remover(df):
     """Returns a modified dataframe with a column named 'Without 
     Stop Words' that includes a tokenised list of words from the 
@@ -225,5 +234,6 @@ def stop_words_remover(df):
     #Removing the english stop words using the provided dictionary
     df["Without Stop Words"] = split_tweets.apply(lambda x: [word for word in x if word not in stop_words_dict['stopwords']])
     return df
+
 ### END FUNCTION
-#----------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
