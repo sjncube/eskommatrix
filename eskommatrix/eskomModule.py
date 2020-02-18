@@ -45,13 +45,20 @@ def dictionary_of_metrics(items):
 def five_num_summary(items):
     # your code here
     """
-    The function takes in a list of integers and returns a dictionary of the five number summary..
-
-Function Specifications:
-
-The function takes a list as an input.
-Returns a dict with keys 'max', 'median', 'min', 'q1', and 'q3' corresponding to the maximum, median, minimum, first quartile and third quartile, respectively. You may use numpy functions to aid in your calculations.
-All numerical values  rounded to two decimal places.
+    Returns the five number summary in dictionary form.
+    
+    Keyword Arguments:
+    items -- input list of integers.
+    
+    Return:
+    returns the five number summary in dictionary form with keys 
+    'max', 'median', 'min', 'q1', and 'q3' corresponding to the 
+    maximum, median, minimum, first quartile and third quartile 
+    of a list of integers.
+    
+    Example:
+    five_num_summary([1,2,3,4,5,6]) returns {'max': 6, 'median': 
+    3.5, 'min': 1, 'q1': 2.25, 'q3': 4.75}
     """
     out_dict={'max':round(max(items),2),#calculates the max
        'median':round(np.median(items),2),#calculates the median of the numbers
