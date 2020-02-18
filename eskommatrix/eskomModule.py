@@ -73,11 +73,16 @@ def date_parser(dates):
     dates -- input a list of datetime strings formatted as
     'yyyy-mm-dd hh:mm:ss'.
 
-    Example: date_parser(['2016-12-01 23:12:40',
+    Return:
+    list of strings where each element in the returned list
+    contains only the date in the 'yyyy-mm-dd' format.
+
+    Example:
+    date_parser(['2016-12-01 23:12:40',
     '2012-02-05 16:10:55', '1999-01-01 19:17:20'])
     returns ['2016-12-01', '2012-02-05', '1999-01-01']
     """
-
+    
     dates_only = [item[0:10] for item in dates]  # slice date portion of string
     return(dates_only)
 
