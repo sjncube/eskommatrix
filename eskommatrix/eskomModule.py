@@ -102,6 +102,7 @@ def extract_municipality_hashtags(df):
                 '@centlecutility' : 'Mangaung',
                 '@NMBmunicipality' : 'Nelson Mandela Bay',
                 '@CityTshwane' : 'Tshwane'}
+                
     #Extract municipalies from tweets and put NANs if municipality is not found
     municipal = []
     for tweet_row in twitter_df['Tweets']:
