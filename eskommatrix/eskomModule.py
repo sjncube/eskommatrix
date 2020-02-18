@@ -130,7 +130,7 @@ def word_splitter(df):
     The function modifies the input dataframe directly.
     The function then returns the modified dataframe as an output on the new column.
     """
-    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())#splits the returns the lower case output on a new column of the data frame
+    df['Split Tweets'] = df.Tweets.apply(lambda x: x.lower().split())#splits the tweets then returns the lower case output on a new column of the dataframe
     return df
 ### END FUNCTION
 #----------------------------------------------------------------------------------#
