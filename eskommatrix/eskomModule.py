@@ -82,7 +82,7 @@ def date_parser(dates):
     '2012-02-05 16:10:55', '1999-01-01 19:17:20'])
     returns ['2016-12-01', '2012-02-05', '1999-01-01']
     """
-    
+
     dates_only = [item[0:10] for item in dates]  # slice date portion of string
     return(dates_only)
 
@@ -92,13 +92,16 @@ def date_parser(dates):
 ### Function 4
 def extract_municipality_hashtags(df):
     """
-    Returns a modified dataframe with addtional columns
-    'municipality' and 'hashtags', containing the muncipality
-    and hashtags mentioned in the tweet or the entry np.nan
-    if neither are found.
+    Extracts the municipality and hashtags mentioned in
+    tweets in two new columns.
 
     Keyword Arguments:
     df -- Pandas dataframe as input with column of 'Tweets'
+
+    Return:
+    a modified dataframe with addtional columns 'municipality'
+    and 'hashtags', containing the muncipality and hashtags
+    mentioned in the tweet or the entry np.nan if neither are found.
 
     Example:
     For the tweet '@EMMInfo Please update on the situation #eskom'
@@ -140,7 +143,7 @@ def extract_municipality_hashtags(df):
     # adding new hashtags column to dataframe
     df['hashtags'] = hashtags
     df['hashtags'] = df['hashtags'].apply(lambda hashtags: hashtags if
-                                         len(hashtags) != 0 else np.nan)
+                                          len(hashtags) != 0 else np.nan)
     return df
 
 ### END FUNCTION
