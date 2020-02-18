@@ -157,7 +157,7 @@ def number_of_tweets_per_day(df):
     Keyword Arguments:
     df -- Pandas dataframe as input with columns named 'Tweets' and 'Date'.
 
-    Returns:
+    Return:
     a new dataframe, grouped by day, with the number of tweets for that day.
 
     Example:
@@ -182,11 +182,14 @@ def number_of_tweets_per_day(df):
 ### Function 6
 def word_splitter(df):
     """Splits the sentences in a dataframe's column into a list of
-    separate lowercase words. Returns a modified dataframe with
-    a new column named 'Split Tweets'
+    separate lowercase words.
 
     Keyword Arguments:
     Pandas dataframe as input with column named 'Tweets'
+
+    Return:
+    Returns a modified dataframe with a new column named 'Split Tweets'
+    containing a list of 'tokens' or separated words
 
     Example:
     For the tweet:
