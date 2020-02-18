@@ -107,7 +107,7 @@ def extract_municipality_hashtags(df):
     For the tweet '@EMMInfo Please update on the situation #eskom'
 
     '@EMMInfo' will be displayed in the 'municipality' column
-    '#eskom' will be displayed in the 'municipality' column
+    '#eskom' will be displayed in the 'hashtag' column
     """
 
     # dictionary of twitter handles and corresponding municipalities
@@ -155,7 +155,10 @@ def number_of_tweets_per_day(df):
     Calculates the number of tweets per day as a dataframe output.
 
     Keyword Arguments:
-    df -- Pandas dataframe as input with columns named 'Tweets' and 'Date'
+    df -- Pandas dataframe as input with columns named 'Tweets' and 'Date'.
+
+    Returns:
+    a new dataframe, grouped by day, with the number of tweets for that day.
 
     Example:
     Date        | Tweet
