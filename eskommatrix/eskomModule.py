@@ -96,7 +96,7 @@ def extract_municipality_hashtags(df):
     tweets in two new columns.
 
     Keyword Arguments:
-    df -- Pandas dataframe as input with column of 'Tweets'
+    df -- Pandas dataframe as input with column of 'Tweets'.
 
     Return:
     a modified dataframe with addtional columns 'municipality'
@@ -181,7 +181,8 @@ def number_of_tweets_per_day(df):
 ### START FUNCTION
 ### Function 6
 def word_splitter(df):
-    """Splits the sentences in a dataframe's column into a list of
+    """
+    Splits the sentences in a dataframe's column into a list of
     separate lowercase words.
 
     Keyword Arguments:
@@ -189,7 +190,7 @@ def word_splitter(df):
 
     Return:
     Returns a modified dataframe with a new column named 'Split Tweets'
-    containing a list of 'tokens' or separated words
+    containing a list of 'tokens' or separated words.
 
     Example:
     For the tweet:
@@ -208,13 +209,17 @@ def word_splitter(df):
 ### START FUNCTION
 ### Function 7
 def stop_words_remover(df):
-    """Returns a modified dataframe with a column named 'Without
+    """
+    Removes english stop words from a dataframe of tweets.
+
+    Keyword Arguments:
+    Pandas dataframe as input with column named 'Tweets'.
+
+    Return:
+    Returns a modified dataframe with a column named 'Without
     Stop Words' that includes a tokenised list of words from the
     respective tweet with English stop words from the
     'stop_words_dict' removed.
-
-    Keyword Arguments:
-    Pandas dataframe as input with column named 'Tweets'
 
     Example:
     For the tweet:
