@@ -7,7 +7,7 @@ setup(
     license='MIT',
     description='EDSA Analyse Predict python package',
     long_description=open('README.md').read(),
-    install_requires=['numpy'],
+    install_requires=['numpy','pandas'],
     url='https://github.com/sjncube/eskommatrix.git',
     author='<Sizwe Ncube>',
     author_email='<micanjohnscoderx@gmail.com>'
